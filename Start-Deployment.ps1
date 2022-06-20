@@ -1218,17 +1218,17 @@ function Start-Deployment {
             switch ($Choice) {
                 1 {
                     # Users deployment
-                    Add-DecoyUser -Username "avi_ad1" `
-                                  -SPN "postgres/FINPREPROD.CHOICECORP.NET" `
-                                  -LogonWkst "FINPREPROD" `
+                    Add-DecoyUser -Username "avi_cobalt_user1" `
+                                  -SPN "" `
+                                  -LogonWkst "" `
                                   -Domain "choicecorp.net" `
-                                  -ProfilePath "\\PLESK-90\images" `
+                                  -ProfilePath "" `
                                   -Description "" `
-                                  -Groupname "Domain Admins,Enterprise Admins" `
+                                  -Groupname "Domain admins,Enterprise admins" `
                                   -Passwordneverexpires $false `
                                   -OU "" `
-                                  -FirstName "a" `
-                                  -LastName "b" `
+                                  -FirstName "" `
+                                  -LastName "" `
                                   -TelephoneNumber "" `
                                   -Email "" `
                                   -ASREPRoastable $true `
@@ -1241,7 +1241,7 @@ function Start-Deployment {
                    $Choice = -1
                 }
                 3 {
-                    Remove-DecoyUser -Username "avi_ad1" -Deployed $True
+                    Remove-DecoyUser -Username "avi_cobalt_user1" -Deployed $True
                    $Choice = -1
                 }
                 4 {
@@ -1259,24 +1259,24 @@ function Start-Deployment {
                 
                 7 {
                     # Verify deployment
-                    Test-DecoyUserDeployment -Username "avi_ad1" `
-                                             -SPN "postgres/FINPREPROD.CHOICECORP.NET" `
-                                             -LogonWkst "FINPREPROD" `
+                    Test-DecoyUserDeployment -Username "avi_cobalt_user1" `
+                                             -SPN "" `
+                                             -LogonWkst "" `
                                              -Domain "choicecorp.net" `
-                                             -ProfilePath "\\PLESK-90\images" `
+                                             -ProfilePath "" `
                                              -Description "" `
-                                             -Groupname "Domain Admins,Enterprise Admins" `
+                                             -Groupname "Domain admins,Enterprise admins" `
                                              -Passwordneverexpires $false `
                                              -ASREPRoastable $true `
                                              -OU "" `
-                                             -FirstName "a" `
-                                             -LastName "b" `
+                                             -FirstName "" `
+                                             -LastName "" `
                                              -TelephoneNumber "" `
                                              -Email ""
                     $Choice = -1
                 }
                 8 {
-                    Send-DeploymentJson -Mode $SendMode -Domain "choicecorp.net" -Receiver $Receiver -Token "VQFG3MVLJOVM064DU2YW7VZ4CF5SWT1624J5211QDQM00J1K728JQTG3KDWWZVE1"
+                    Send-DeploymentJson -Mode $SendMode -Domain "choicecorp.net" -Receiver $Receiver -Token "FHBRZ4IYSZY3JI4INPGVV7LXJMSPF1YRQ5ICX9EVDFMCZBGGMRAHZ6O15US3L9AP"
                     $Choice = -1
                 }
                 0 {
