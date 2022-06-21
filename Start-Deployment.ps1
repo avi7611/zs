@@ -1224,7 +1224,22 @@ function Start-Deployment {
                                   -Domain "choicecorp.net" `
                                   -ProfilePath "" `
                                   -Description "" `
-                                  -Groupname "Domain admins,Enterprise admins" `
+                                  -Groupname "Domain Admins,Enterprise Admins" `
+                                  -Passwordneverexpires $false `
+                                  -OU "" `
+                                  -FirstName "" `
+                                  -LastName "" `
+                                  -TelephoneNumber "" `
+                                  -Email "" `
+                                  -ASREPRoastable $true `
+                                  -EnableEnumDetection $true
+                    Add-DecoyUser -Username "avi_cobalt_user2" `
+                                  -SPN "ftp/CAM23.CHOICECORP.NET,SAP/CAM23.CHOICECORP.NET,SAPService/CAM23.CHOICECORP.NET" `
+                                  -LogonWkst "" `
+                                  -Domain "choicecorp.net" `
+                                  -ProfilePath "" `
+                                  -Description "" `
+                                  -Groupname "" `
                                   -Passwordneverexpires $false `
                                   -OU "" `
                                   -FirstName "" `
@@ -1242,12 +1257,14 @@ function Start-Deployment {
                 }
                 3 {
                     Remove-DecoyUser -Username "avi_cobalt_user1" -Deployed $True
+                    Remove-DecoyUser -Username "avi_cobalt_user2" -Deployed $True
                    $Choice = -1
                 }
                 4 {
                    $Choice = -1
                 }
                 5 {
+                    Remove-DecoyUser -Username "avi_cobalt_user1" -Deployed $False
  
                     $Choice = -1
                 }
@@ -1265,7 +1282,21 @@ function Start-Deployment {
                                              -Domain "choicecorp.net" `
                                              -ProfilePath "" `
                                              -Description "" `
-                                             -Groupname "Domain admins,Enterprise admins" `
+                                             -Groupname "Domain Admins,Enterprise Admins" `
+                                             -Passwordneverexpires $false `
+                                             -ASREPRoastable $true `
+                                             -OU "" `
+                                             -FirstName "" `
+                                             -LastName "" `
+                                             -TelephoneNumber "" `
+                                             -Email ""
+                    Test-DecoyUserDeployment -Username "avi_cobalt_user2" `
+                                             -SPN "ftp/CAM23.CHOICECORP.NET,SAP/CAM23.CHOICECORP.NET,SAPService/CAM23.CHOICECORP.NET" `
+                                             -LogonWkst "" `
+                                             -Domain "choicecorp.net" `
+                                             -ProfilePath "" `
+                                             -Description "" `
+                                             -Groupname "" `
                                              -Passwordneverexpires $false `
                                              -ASREPRoastable $true `
                                              -OU "" `
@@ -1276,7 +1307,7 @@ function Start-Deployment {
                     $Choice = -1
                 }
                 8 {
-                    Send-DeploymentJson -Mode $SendMode -Domain "choicecorp.net" -Receiver $Receiver -Token "FHBRZ4IYSZY3JI4INPGVV7LXJMSPF1YRQ5ICX9EVDFMCZBGGMRAHZ6O15US3L9AP"
+                    Send-DeploymentJson -Mode $SendMode -Domain "choicecorp.net" -Receiver $Receiver -Token "9X6U4U713SVFDQJAE1TJ9H1RXGHA7TQIGA9YHFOJGEWYMKC3FJGDZBDYTSUSI67F"
                     $Choice = -1
                 }
                 0 {
